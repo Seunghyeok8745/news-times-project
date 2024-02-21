@@ -1,0 +1,161 @@
+.head-line {
+  margin-top: 0.7em;
+  display: flex;
+  justify-content: center;
+}
+.head-bar {
+  display: flex;
+  margin-top: 13px;
+}
+.container .search {
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 9px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+.container .search:hover {
+  background-color: #ebebebc2;
+  transition: background-color 0.2s ease-in;
+}
+.container .search.active {
+  background-color: #ebebebdf;
+  transition: background-color 0.2s ease-in;
+}
+#textSearch,
+#goButton {
+  display: none;
+}
+.container #burger {
+  font-size: 16px;
+  margin-right: 20px;
+}
+.head-bar input {
+  border: 2px solid black;
+  height: 33px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+.head-button {
+  border: none;
+
+  height: 33px;
+  font-size: 11px;
+  padding: 9px 9px 9px;
+  border-radius: 5px;
+  color: white;
+  background-color: #567b95;
+  letter-spacing: 1px;
+}
+.head-line svg {
+  width: 430px;
+}
+.menus {
+  margin-top: 1.5em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 4px double black;
+}
+.menus button {
+  border: none;
+  background: none;
+  margin: 13px 7px;
+}
+.menus button:hover {
+  background-color: #ebebeb;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.news-image-size {
+  max-width: 100%;
+  max-height: 100%;
+}
+.news {
+  border-bottom: 1.5px solid black;
+  padding: 20px;
+}
+#content {
+  max-width: 100%;
+  margin-top: 9px;
+}
+.author {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.514);
+}
+p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.514);
+}
+h5 {
+  margin-top: 15px;
+  line-height: 30px;
+  color: #333333e9;
+}
+h2 {
+  line-height: 40px;
+}
+#burger {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 9px;
+}
+#burger:hover {
+  border-radius: 5px;
+  padding: 9px;
+  background-color: #ebebebc2;
+  transition: background-color 0.2s ease-in;
+}
+.sideBar {
+  height: 100%;
+  width: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #bababa;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+
+.sideBar a {
+  padding: 8px 8px 20px 32px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sideBar a:hover {
+  color: #f1f1f1;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  font-size: 50px;
+  margin-left: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .sideBar a {
+    font-size: 20px;
+  }
+  .menus button {
+    display: none;
+  }
+  .head-line {
+    margin-top: 2em;
+  }
+  .head-bar {
+    margin-top: 20px;
+  }
+}
