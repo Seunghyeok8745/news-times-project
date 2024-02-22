@@ -1,5 +1,11 @@
 const API_Key = 'e1951a07c46347df87e230368a039c0d';
 let newsList = [];
+let categoryBtn = document.querySelectorAll('.menus button');
+
+categoryBtn.forEach((menu) => {
+  menu.addEventListener('click', (event) => getNewsByCategory(event));
+});
+
 const getLatestNews = async () => {
   const url = new URL(
     `https://news-times-projectbyshkim.netlify.app/top-headlines?country=us&apiKey=${API_Key}`
@@ -12,6 +18,31 @@ const getLatestNews = async () => {
   newsList = data.articles;
   render();
   console.log(newsList);
+};
+
+const getNewsByCategory = async (event) => {
+  const category = event.target.textContent.toLowerCase();
+  //  event.target = 이벤트가 발생한 요소
+  // textContent 속성을 사용하면 해당 요소의 텍스트 콘텐츠를 가져옴
+  const url = new URL(
+    `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_Key}`
+  );
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
+  newsList = data.articles;
+  render();
+};
+
+const getNewsBySearch = async () => {
+  const keyword = textBar.value.toLowerCase();
+  const url = new URL(
+    `https://newsapi.org/v2/everything?q=${keyword}&apiKey=${API_Key}`
+  );
+  const response = await fetch(url);
+  const data = await response.json();
+  newsList = data.articles;
+  render();
 };
 
 const render = () => {
@@ -27,7 +58,8 @@ const render = () => {
 
       let urlImage =
         news.urlToImage ||
-        'https://cdn.vectorstock.com/i/preview-1x/33/48/default-image-icon-missing-picture-page-vector-40343348.jpg';
+        'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg';
+
       let sources = news.source.name;
       if (!sources) {
         sources = 'no source';
@@ -83,10 +115,22 @@ textBar.addEventListener('focus', function () {
   textBar.value = '';
 });
 
+headButton.addEventListener('click', getNewsBySearch);
+
 burgerMenu.addEventListener('click', function openNav() {
-  navBar.style.width = '270px';
+  navBar.style.width = '230px';
 });
 
 xButton.addEventListener('click', function closeNav() {
   navBar.style.width = '0';
+});
+
+textBar.addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    if (textBar.value === '') {
+      alert('Please enter a keyword!');
+    } else {
+      getNewsBySearch();
+    }
+  }
 });
