@@ -143,7 +143,7 @@ textBar.addEventListener('focus', function () {
 headButton.addEventListener('click', getNewsBySearch);
 
 burgerMenu.addEventListener('click', function openNav() {
-  navBar.style.width = '230px';
+  navBar.style.width = '210px';
 });
 
 xButton.addEventListener('click', function closeNav() {
