@@ -6,26 +6,42 @@ categoryBtn.forEach((menu) => {
   menu.addEventListener('click', (event) => getNewsByCategory(event));
 });
 
+let url = new URL(
+  `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_Key}`
+);
+
+const getNews = async () => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (response.status === 200) {
+      if (data.articles.length == 0) {
+        throw new Error('No result found');
+      }
+      newsList = data.articles;
+      render();
+    } else {
+      throw new Error(data.message);
+    }
+  } catch (error) {
+    errorRender(error.message);
+  }
+};
+
 const getLatestNews = async () => {
-  const url = new URL(
+  url = new URL(
     `https://news-times-projectbyshkim.netlify.app/top-headlines?apiKey=${API_Key}`
   );
 
-  const response = await fetch(url);
-  const data = await response.json();
-  newsList = data.articles;
-  render();
+  getNews();
 };
 
 const getNewsByCategory = async (event) => {
   const category = event.target.textContent.toLowerCase();
-  const url = new URL(
+  url = new URL(
     `https://news-times-projectbyshkim.netlify.app/top-headlines?category=${category}&apiKey=${API_Key}`
   );
-  const response = await fetch(url);
-  const data = await response.json();
-  newsList = data.articles;
-  render();
+  getNews();
 };
 
 const menuSide = document.querySelectorAll('#toggleButton');
@@ -35,6 +51,10 @@ menuSide.forEach((menu) => {
 
 const getNewsBySearch = async () => {
   const keyword = textBar.value.toLowerCase();
+  if (keyword === '') {
+    alert('Please enter a keyword before searching.');
+    return;
+  }
   const categories = [
     'business',
     'entertainment',
@@ -45,28 +65,23 @@ const getNewsBySearch = async () => {
     'general',
   ];
   if (categories.includes(keyword)) {
-    const url = new URL(
+    url = new URL(
       `https://news-times-projectbyshkim.netlify.app/top-headlines?country=kr&category=${keyword}&apiKey=${API_Key}`
     );
-    const response = await fetch(url);
-    const data = await response.json();
-    newsList = data.articles;
+
     if (newsList.length === 0) {
       alert(`No Result! Put Different Keyword`);
     } else {
-      render();
+      getNews();
     }
   } else {
-    const url = new URL(
+    url = new URL(
       `https://news-times-projectbyshkim.netlify.app/top-headlines?q=${keyword}&country=kr&apiKey=${API_Key}`
     );
-    const response = await fetch(url);
-    const data = await response.json();
-    newsList = data.articles;
     if (newsList.length === 0) {
       alert(`No Result! Put Different Keyword`);
     } else {
-      render();
+      getNews();
     }
   }
 };
@@ -111,6 +126,15 @@ const render = () => {
     })
     .join('');
   document.getElementById('news-board').innerHTML = newsHTML;
+};
+
+const errorRender = (errorMessage) => {
+  const errorHTML = `<div class="errorArea">
+  <img src="./errorImage.jpg" alt="error-message">
+          <h3>${errorMessage}</h3>
+          <p>We couldn't find what you search for <br> Try searching again.</p>
+          </div>`;
+  document.getElementById('news-board').innerHTML = errorHTML;
 };
 
 getLatestNews();

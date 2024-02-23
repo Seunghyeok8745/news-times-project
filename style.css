@@ -148,7 +148,16 @@ h2 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+.errorArea {
+  text-align: center;
+}
+.errorArea img {
+  width: 25em;
+  height: 0%;
+}
+.errorArea h3 {
+  margin-top: 0;
+}
 @media screen and (max-width: 700px) {
   .sideBar #toggleButton {
     font-size: 16px;
@@ -194,5 +203,12 @@ h2 {
     width: 140px;
     border-radius: 3px;
     margin-right: 5px;
+  }
+  .errorArea img {
+    width: 20em;
+    height: 80%;
+  }
+  .errorArea {
+    padding-top: 20px;
   }
 }
