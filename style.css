@@ -44,7 +44,7 @@
   padding: 9px 9px 9px;
   border-radius: 5px;
   color: white;
-  background-color: #567b95;
+  background-color: rgba(0, 0, 0, 0.65);
   letter-spacing: 1px;
 }
 .head-line svg {
@@ -68,6 +68,9 @@
   background-color: #ebebeb;
   margin-top: 0;
   margin-bottom: 0;
+}
+.head-button:hover {
+  background-color: rgba(0, 0, 0, 0.508);
 }
 .news-image-size {
   max-width: 100%;
@@ -158,14 +161,16 @@ h2 {
 .errorArea h3 {
   margin-top: 0;
 }
+@media screen and (max-width: 850px) {
+  .menus button {
+    display: none;
+  }
+}
 @media screen and (max-width: 700px) {
   .sideBar #toggleButton {
     font-size: 16px;
   }
 
-  .menus button {
-    display: none;
-  }
   .head-line {
     margin-top: 2em;
   }
