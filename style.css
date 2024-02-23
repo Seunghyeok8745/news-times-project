@@ -131,7 +131,7 @@ h2 {
   margin-top: 12px;
 }
 
-.sideBar .category:hover {
+.sideBar #toggleButton:hover {
   color: white;
   background-color: rgba(0, 0, 0, 0.65);
 }

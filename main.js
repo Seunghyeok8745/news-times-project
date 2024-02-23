@@ -28,6 +28,11 @@ const getNewsByCategory = async (event) => {
   render();
 };
 
+const menuSide = document.querySelectorAll('#toggleButton');
+menuSide.forEach((menu) => {
+  menu.addEventListener('click', (event) => getNewsByCategory(event));
+});
+
 const getNewsBySearch = async () => {
   const keyword = textBar.value.toLowerCase();
   const categories = [
