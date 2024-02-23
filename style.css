@@ -166,11 +166,6 @@ h2 {
 }
 
 @media screen and (max-width: 450px) {
-  .sideBar {
-    transition: 0.4s;
-    padding-top: 60px;
-    padding-bottom: 10px;
-  }
   .closebtn {
     font-size: 20px;
     margin-top: 40px;
