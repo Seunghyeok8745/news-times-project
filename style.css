@@ -161,6 +161,9 @@ h2 {
 .errorArea h3 {
   margin-top: 0;
 }
+input {
+  letter-spacing: 0.8px;
+}
 @media screen and (max-width: 850px) {
   .menus button {
     display: none;
