@@ -142,7 +142,7 @@ h2 {
   position: absolute;
   top: 0;
   right: 30px;
-  font-size: 22px;
+  font-size: 26px;
   color: #818181;
   margin-left: 100px;
   margin-top: 20px;
@@ -150,7 +150,7 @@ h2 {
 }
 
 @media screen and (max-width: 700px) {
-  .sideBar a {
+  .sideBar #toggleButton {
     font-size: 16px;
   }
 
@@ -166,6 +166,16 @@ h2 {
 }
 
 @media screen and (max-width: 450px) {
+  .sideBar {
+    transition: 0.4s;
+    padding-top: 60px;
+    padding-bottom: 10px;
+  }
+  .closebtn {
+    font-size: 25px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
   .sideBar a {
     font-size: 14px;
   }
@@ -177,7 +187,7 @@ h2 {
     margin-top: 2em;
   }
   .head-bar {
-    margin-top: 15px;
+    margin-top: 10px;
   }
   .container #burger {
     font-size: 16px;
