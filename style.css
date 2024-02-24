@@ -5,7 +5,7 @@
 }
 .head-bar {
   display: flex;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 .container .search {
   font-size: 18px;
@@ -29,7 +29,7 @@
 }
 .container #burger {
   font-size: 18px;
-  margin-right: 20px;
+  margin-right: 10px;
   display: none;
 }
 .head-bar input {
@@ -37,6 +37,7 @@
   height: 35px;
   border-radius: 3px;
   margin-right: 5px;
+  width: 14em;
 }
 .head-button {
   border: none;
@@ -171,7 +172,7 @@ input {
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  margin-bottom: 65px;
+  margin-bottom: 75px;
 }
 .pagination li {
   width: 45px;
@@ -221,7 +222,7 @@ input {
     margin-bottom: 40px;
   }
   .sideBar #toggleButton {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .menus button {
@@ -235,13 +236,12 @@ input {
   }
   .container #burger {
     font-size: 16px;
-    margin-right: 17px;
     margin-left: 5px;
   }
   .head-bar input {
     border: 2px solid black;
     height: 33px;
-    width: 140px;
+    width: 150px;
     border-radius: 3px;
     margin-right: 5px;
   }

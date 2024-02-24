@@ -160,26 +160,46 @@ const pageNationRender = () => {
     lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
 
   let pageNationHTML = '';
+
+  pageNationHTML += `<li class="page-item ${page === 1 ? 'd-none' : ''}  ${
+    page === 2 ? 'd-none' : ''
+  }" onclick ="${page !== 1 ? `moveToPage(1)` : ''} ">
+<a class="page-link" aria-label="Previous">
+<span aria-hidden="true">&laquo;</span>
+</a>
+</li>`;
+
   pageNationHTML += `<li class="page-item ${
-    page === 1 ? 'disabled' : ''
-  }" onclick ="${page !== 1 ? `moveToPage(${page - 1})` : ''}">
+    page === 1 ? 'd-none' : ''
+  } " onclick ="${page !== 1 ? `moveToPage(${page - 1})` : ''}">
 <a class="page-link" aria-label="Previous">
   <span aria-hidden="true">&lsaquo;</span>
 </a>
 </li>`;
 
-  for (let i = firstPage; i <= lastPage; i++) {
+  let endPage = Math.min(lastPage, firstPage + 4);
+  let startPage = Math.max(1, endPage - 4);
+
+  for (let i = startPage; i <= endPage; i++) {
     pageNationHTML += ` <li class="page-item ${
       i === page ? 'active' : ''
     }" onclick = "moveToPage(${i})"><a class="page-link">${i}</a></li>`;
   }
 
   pageNationHTML += `<li class="page-item ${
-    page === totalPages ? 'disabled' : ''
+    page === totalPages ? 'd-none' : ''
   }" onclick="${page !== totalPages ? `moveToPage(${page + 1})` : ''}">
   <a class="page-link" aria-label="Next">
     <span aria-hidden="true">&rsaquo;</span>
   </a>
+</li>`;
+
+  pageNationHTML += `<li class="page-item ${
+    page === totalPages ? 'd-none' : ''
+  } " onclick ="${page !== totalPages ? `moveToPage(${totalPages})` : ''}">
+<a class="page-link" aria-label="Previous">
+<span aria-hidden="true">&raquo;</span>
+</a>
 </li>`;
 
   document.querySelector('.pagination').innerHTML = pageNationHTML;
@@ -236,7 +256,7 @@ textBar.addEventListener('focus', function () {
 headButton.addEventListener('click', getNewsBySearch);
 
 burgerMenu.addEventListener('click', function openNav() {
-  navBar.style.width = '200px';
+  navBar.style.width = '190px';
 });
 
 xButton.addEventListener('click', function closeNav() {
