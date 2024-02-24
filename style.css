@@ -1,14 +1,14 @@
 .head-line {
-  margin-top: 0.7em;
+  margin-top: 1em;
   display: flex;
   justify-content: center;
 }
 .head-bar {
   display: flex;
-  margin-top: 13px;
+  margin-top: 15px;
 }
 .container .search {
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 5px;
   padding: 9px;
   cursor: pointer;
@@ -25,21 +25,23 @@
 #textSearch,
 #goButton {
   display: none;
+  transition: 0.2s ease-in-out;
 }
 .container #burger {
-  font-size: 16px;
+  font-size: 18px;
   margin-right: 20px;
+  display: none;
 }
 .head-bar input {
   border: 2px solid black;
-  height: 33px;
+  height: 35px;
   border-radius: 3px;
   margin-right: 5px;
 }
 .head-button {
   border: none;
 
-  height: 33px;
+  height: 35px;
   font-size: 11px;
   padding: 9px 9px 9px;
   border-radius: 5px;
@@ -163,10 +165,34 @@ h2 {
 }
 input {
   letter-spacing: 0.8px;
+  padding-left: 10px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+.pagination li {
+  width: 45px;
+  text-align: center;
+  z-index: 0;
 }
 @media screen and (max-width: 850px) {
   .menus button {
     display: none;
+  }
+  .container #burger {
+    display: block;
+  }
+  .head-bar input {
+    height: 33px;
+  }
+  .head-button {
+    height: 33px;
+  }
+  .head-line {
+    margin-top: 2em;
   }
 }
 @media screen and (max-width: 700px) {
@@ -175,10 +201,16 @@ input {
   }
 
   .head-line {
-    margin-top: 2em;
+    margin-top: 1.7em;
   }
   .head-bar {
     margin-top: 20px;
+  }
+  .container #burger {
+    font-size: 16px;
+  }
+  .container .search {
+    font-size: 16px;
   }
 }
 
@@ -203,7 +235,8 @@ input {
   }
   .container #burger {
     font-size: 16px;
-    margin-right: 10px;
+    margin-right: 17px;
+    margin-left: 5px;
   }
   .head-bar input {
     border: 2px solid black;

@@ -10,16 +10,27 @@ let url = new URL(
   `https://news-times-projectbyshkim.netlify.app/top-headlines?country=us&apiKey=${API_Key}`
 );
 
+let totalResult = 0;
+let page = 1;
+let pageSize = 10;
+let groupSize = 5;
+
 const getNews = async () => {
   try {
+    url.searchParams.set('page', page); // &page=page
+    url.searchParams.set('pagesize', pageSize);
     const response = await fetch(url);
     const data = await response.json();
+    console.log('ddd', data);
     if (response.status === 200) {
       if (data.articles.length == 0) {
+        hidePageNation();
         throw new Error('No result found');
       }
       newsList = data.articles;
+      totalResult = data.totalResults;
       render();
+      pageNationRender();
     } else {
       throw new Error(data.message);
     }
@@ -41,6 +52,7 @@ const getNewsByCategory = async (event) => {
   url = new URL(
     `https://news-times-projectbyshkim.netlify.app/top-headlines?category=${category}&apiKey=${API_Key}`
   );
+  page = 1;
   getNews();
 };
 
@@ -137,6 +149,52 @@ const errorRender = (errorMessage) => {
   document.getElementById('news-board').innerHTML = errorHTML;
 };
 
+const pageNationRender = () => {
+  const pageGroup = Math.ceil(page / groupSize);
+  const totalPages = Math.ceil(totalResult / pageSize);
+  let lastPage = pageGroup * groupSize;
+  if (lastPage > totalPages) {
+    lastPage = totalPages;
+  }
+  const firstPage =
+    lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
+
+  let pageNationHTML = '';
+  pageNationHTML += `<li class="page-item ${
+    page === 1 ? 'disabled' : ''
+  }" onclick ="moveToPage(${page - 1 > 0 ? page - 1 : 1})" >
+<a class="page-link" aria-label="Previous">
+  <span aria-hidden="true">&laquo;</span>
+</a>
+</li>`;
+
+  for (let i = firstPage; i <= lastPage; i++) {
+    pageNationHTML += ` <li class="page-item ${
+      i === page ? 'active' : ''
+    }" onclick = "moveToPage(${i})"><a class="page-link">${i}</a></li>`;
+  }
+
+  pageNationHTML += `<li class="page-item ${
+    page === totalPages ? 'disabled' : ''
+  }" onclick="moveToPage(${page + 1 <= totalPages ? page + 1 : totalPages})">
+  <a class="page-link" aria-label="Next">
+    <span aria-hidden="true">&raquo;</span>
+  </a>
+</li>`;
+
+  document.querySelector('.pagination').innerHTML = pageNationHTML;
+};
+
+const moveToPage = (pageNum) => {
+  console.log('test', pageNum);
+  page = pageNum;
+  getNews();
+};
+
+const hidePageNation = () => {
+  document.querySelector('.pagination').innerHTML = '';
+};
+
 getLatestNews();
 
 let searchIcon = document.getElementById('search');
@@ -152,10 +210,20 @@ searchIcon.addEventListener('click', function () {
   if (isDisplayed) {
     textBar.style.display = 'inline';
     headButton.style.display = 'inline';
+    textBar.style.opacity = '0';
+    headButton.style.opacity = '0';
+    setTimeout(() => {
+      textBar.style.opacity = '1';
+      headButton.style.opacity = '1';
+    }, 100);
     searchIcon.classList.add('active');
   } else {
-    textBar.style.display = 'none';
-    headButton.style.display = 'none';
+    textBar.style.opacity = '0';
+    headButton.style.opacity = '0';
+    setTimeout(() => {
+      textBar.style.display = 'none';
+      headButton.style.display = 'none';
+    }, 200);
     searchIcon.classList.remove('active');
   }
 });
