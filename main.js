@@ -162,7 +162,7 @@ const pageNationRender = () => {
   let pageNationHTML = '';
   pageNationHTML += `<li class="page-item ${
     page === 1 ? 'disabled' : ''
-  }" onclick ="moveToPage(${page - 1 > 0 ? page - 1 : 1})" >
+  }" onclick ="${page !== 1 ? `moveToPage(${page - 1})` : ''}">
 <a class="page-link" aria-label="Previous">
   <span aria-hidden="true">&laquo;</span>
 </a>
