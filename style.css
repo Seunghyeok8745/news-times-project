@@ -197,6 +197,9 @@ input {
   }
 }
 @media screen and (max-width: 700px) {
+  .head-line {
+    margin-top: 0.6em;
+  }
   .sideBar #toggleButton {
     font-size: 16px;
   }
