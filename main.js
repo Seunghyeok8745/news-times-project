@@ -176,7 +176,7 @@ const pageNationRender = () => {
 
   pageNationHTML += `<li class="page-item ${
     page === totalPages ? 'disabled' : ''
-  }" onclick="moveToPage(${page + 1 <= totalPages ? page + 1 : totalPages})">
+  }" onclick="${page !== totalPages ? `moveToPage(${page + 1})` : ''}">
   <a class="page-link" aria-label="Next">
     <span aria-hidden="true">&raquo;</span>
   </a>
