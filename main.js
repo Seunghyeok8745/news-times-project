@@ -189,6 +189,7 @@ const moveToPage = (pageNum) => {
   console.log('test', pageNum);
   page = pageNum;
   getNews();
+  window.scrollTo(0, 0);
 };
 
 const hidePageNation = () => {
