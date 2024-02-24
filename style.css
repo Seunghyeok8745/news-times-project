@@ -192,20 +192,10 @@ input {
   .head-button {
     height: 33px;
   }
-  .head-line {
-    margin-top: 2em;
-  }
 }
 @media screen and (max-width: 700px) {
-  .head-line {
-    margin-top: 0.6em;
-  }
   .sideBar #toggleButton {
     font-size: 16px;
-  }
-
-  .head-line {
-    margin-top: 1.7em;
   }
   .head-bar {
     margin-top: 20px;
@@ -227,12 +217,8 @@ input {
   .sideBar #toggleButton {
     font-size: 17px;
   }
-
   .menus button {
     display: none;
-  }
-  .head-line {
-    margin-top: 2em;
   }
   .head-bar {
     margin-top: 10px;
