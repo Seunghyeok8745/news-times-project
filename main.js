@@ -7,7 +7,7 @@ categoryBtn.forEach((menu) => {
 });
 
 let url = new URL(
-  `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_Key}`
+  `https://news-times-projectbyshkim.netlify.app/top-headlines?country=us&apiKey=${API_Key}`
 );
 
 const getNews = async () => {
