@@ -164,7 +164,7 @@ const pageNationRender = () => {
     page === 1 ? 'disabled' : ''
   }" onclick ="${page !== 1 ? `moveToPage(${page - 1})` : ''}">
 <a class="page-link" aria-label="Previous">
-  <span aria-hidden="true">&laquo;</span>
+  <span aria-hidden="true">&lsaquo;</span>
 </a>
 </li>`;
 
@@ -178,7 +178,7 @@ const pageNationRender = () => {
     page === totalPages ? 'disabled' : ''
   }" onclick="${page !== totalPages ? `moveToPage(${page + 1})` : ''}">
   <a class="page-link" aria-label="Next">
-    <span aria-hidden="true">&raquo;</span>
+    <span aria-hidden="true">&rsaquo;</span>
   </a>
 </li>`;
 
