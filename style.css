@@ -173,6 +173,8 @@ input {
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 75px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .pagination li {
   width: 45px;
@@ -191,6 +193,10 @@ input {
   }
   .head-button {
     height: 33px;
+  }
+  .pagination li {
+    width: 35px;
+    text-align: center;
   }
 }
 @media screen and (max-width: 700px) {
