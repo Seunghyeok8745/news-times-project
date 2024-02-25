@@ -195,7 +195,9 @@ const pageNationRender = () => {
 
   pageNationHTML += `<li class="page-item ${
     page === totalPages ? 'd-none' : ''
-  } " onclick ="${page !== totalPages ? `moveToPage(${totalPages})` : ''}">
+  } ${page === totalPages - 1 ? 'd-none' : ''}" onclick ="${
+    page !== totalPages ? `moveToPage(${totalPages})` : ''
+  }">
 <a class="page-link" aria-label="Previous">
 <span aria-hidden="true">&raquo;</span>
 </a>
