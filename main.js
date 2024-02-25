@@ -117,17 +117,16 @@ const render = () => {
         description = 'No Content';
       }
 
-      let urlImage =
-        news.urlToImage ||
-        'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg';
-
       let sources = news.source.name || 'No Source';
 
       let publishedAt = moment(news.publishedAt).fromNow();
 
       return `<div class="row news">
  <div class="col-lg-4 photo">
-   <img class="news-image-size" src="${urlImage}" />
+   <img class="news-image-size" src="${
+     news.urlToImage ||
+     'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg'
+   }" />
  </div>
  <div class="col-lg-8" id="content">
    <h2>${news.title}</h2>
@@ -256,7 +255,7 @@ textBar.addEventListener('focus', function () {
 headButton.addEventListener('click', getNewsBySearch);
 
 burgerMenu.addEventListener('click', function openNav() {
-  navBar.style.width = '190px';
+  navBar.style.width = '200px';
 });
 
 xButton.addEventListener('click', function closeNav() {
